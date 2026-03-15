@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Document | Portfolio Management</title>
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-hover: #059669;
+            --bg: #f8fafc;
+            --text-dark: #1e293b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background-color: var(--bg);
+            color: var(--text-dark);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .edit-card {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            transition: border-color 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .cancel-link {
+            text-align: center;
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-top: 10px;
+        }
+
+        .cancel-link:hover {
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="edit-card">
+        <h1>Edit Document</h1>
+        
+        <form action="/edit/<%= upload.id %>" method="POST">
+            <label for="filename">Rename File</label>
+            <input 
+                type="text" 
+                id="filename" 
+                name="filename" 
+                value="<%= upload.filename %>" 
+                placeholder="Enter new filename..."
+                required
+                autocomplete="off"
+            >
+            
+            <div class="actions">
+                <button type="submit">Save Changes</button>
+                <a href="/" class="cancel-link">Cancel and go back</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
